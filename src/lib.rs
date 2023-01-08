@@ -3,7 +3,9 @@
 #[macro_use]
 extern crate pbc_contract_codegen;
 
+use pbc_contract_common::address::Address;
 use pbc_contract_common::context::{ContractContext};
+use pbc_contract_common::info as log;
 
 
 /// This is the state of the contract which is persisted on chain.
@@ -44,6 +46,7 @@ fn greet(
     state: ContractState,
     name: String,
 ) -> ContractState {
+    log(format!("Name is {}", name));
     assert!(!name.is_empty(), "name must not be empty");
 
     let mut new_state = state;
